@@ -1,0 +1,38 @@
+.app-container-categoryListCards {
+    width: 100%;
+}
+
+.wrapper-categoryListCards {
+    width: 80%;
+    margin: auto;
+    display: flex;
+}
+
+.categoryListCards-cards {
+    margin: 20px 0px;
+}
+.categoryListCards-cards-header {
+    margin-left: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 10px;
+    padding: 0px 1rem;
+}
+
+.container-cards .card:hover {
+    transform: scale(1.05);
+}
+
+.categoryListCards-cards-title {
+    font-weight: normal;
+    font-size: 0.8rem;
+}
+
+.categoryListCards-card-content {
+    padding: 20px;
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

@@ -1,0 +1,64 @@
+.container-filter {
+    margin: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+    background-color: white;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.header-filter {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    border-bottom: 1px solid #9b9b9b;
+}
+
+.header-filter-icon {
+}
+
+.header-filter-title {
+    letter-spacing: 1px;
+}
+
+.body-filter-category > h3,
+.body-filter-author > h3,
+.body-filter-age > h3 {
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.body-filter-category,
+.body-filter-author,
+.body-filter-age {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #9b9b9b;
+}
+
+.topping {
+    margin-bottom: 7px;
+    cursor: pointer;
+}
+
+.topping > input {
+    cursor: pointer;
+}
+
+.topping > label {
+    font-size: 0.8rem;
+}
+
+.topping:hover .filter-checkbox-label,
+input[type="checkbox"]:checked + label {
+    color: #34daf0;
+    font-weight: bold;
+}
+
+.filter-checkbox-label {
+    margin-left: 5px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}

@@ -5,6 +5,7 @@ import { useShoppingCart } from "../context/ShoppingCartContext";
 import books from "../../models/books.json";
 import "./cartItem.css";
 import { calculatePriceWithDiscount } from "../card/card";
+import Tooltip from "rc-tooltip";
 
 type CartItemProps = {
     id: number;
@@ -43,6 +44,34 @@ const CartItem = ({ id, quantity }: CartItemProps) => {
                                         ) * quantity
                                     ).toFixed(2)}
                                 </span>
+                                <div className="cart-item-btn-delete">
+                                    <Tooltip
+                                        overlayStyle={{
+                                            color: "#dc3545",
+                                            borderRadius: "1rem",
+                                        }}
+                                        overlayInnerStyle={{
+                                            backgroundColor: "#dc3545",
+                                            color: "white",
+                                            border: "none",
+
+                                            minHeight: "10px",
+                                        }}
+                                        mouseLeaveDelay={0}
+                                        placement="bottomLeft"
+                                        trigger={["hover"]}
+                                        overlay={
+                                            <span>Eliminar esta orden</span>
+                                        }
+                                    >
+                                        <FiDelete
+                                            className="icon-delete-item"
+                                            onClick={() =>
+                                                removeFromCart(item.id)
+                                            }
+                                        ></FiDelete>
+                                    </Tooltip>
+                                </div>
                             </>
                         ) : (
                             <>
@@ -52,37 +81,90 @@ const CartItem = ({ id, quantity }: CartItemProps) => {
                                 <span className="cart-item-price-subtotal">
                                     S/ {(item.price * quantity).toFixed(2)}
                                 </span>
+                                <div className="cart-item-btn-delete">
+                                    <Tooltip
+                                        overlayStyle={{
+                                            color: "#dc3545",
+                                            borderRadius: "1rem",
+                                        }}
+                                        overlayInnerStyle={{
+                                            backgroundColor: "#dc3545",
+                                            color: "white",
+                                            border: "none",
+                                            minHeight: "10px",
+                                        }}
+                                        mouseLeaveDelay={0}
+                                        placement="bottom"
+                                        trigger={["hover"]}
+                                        overlay={
+                                            <span>Eliminar esta orden</span>
+                                        }
+                                    >
+                                        <FiDelete
+                                            className="icon-delete-item"
+                                            onClick={() =>
+                                                removeFromCart(item.id)
+                                            }
+                                        ></FiDelete>
+                                    </Tooltip>
+                                </div>
                             </>
                         )}
                     </div>
                     <div className="cart-item-info-quantity">
                         {quantity > 0 && (
                             <>
-                                <AiFillMinusCircle
-                                    className="cart-item-icon-deacrease"
-                                    title="Disminuir 1 libro"
-                                    onClick={() =>
-                                        decreaseCartQuantity(item.id)
-                                    }
-                                ></AiFillMinusCircle>
+                                <Tooltip
+                                    overlayStyle={{
+                                        color: "#17a2b8",
+                                        borderRadius: "1rem",
+                                    }}
+                                    overlayInnerStyle={{
+                                        backgroundColor: "#17a2b8",
+                                        color: "white",
+                                        border: "none",
+                                        minHeight: "10px",
+                                    }}
+                                    mouseLeaveDelay={0}
+                                    placement="bottom"
+                                    trigger={["hover"]}
+                                    overlay={<span>Disminuir un libro</span>}
+                                >
+                                    <AiFillMinusCircle
+                                        className="cart-item-icon-deacrease"
+                                        onClick={() =>
+                                            decreaseCartQuantity(item.id)
+                                        }
+                                    ></AiFillMinusCircle>
+                                </Tooltip>
+
                                 <span className="cart-item-quantity">
                                     x {quantity}
                                 </span>
                             </>
                         )}
-                        <AiFillPlusCircle
-                            className="cart-item-icon-increase"
-                            title="Aumentar 1 libro"
-                            onClick={() => increaseCartQuantity(item.id)}
-                        ></AiFillPlusCircle>
+                        <Tooltip
+                            overlayStyle={{
+                                color: "#17a2b8",
+                                borderRadius: "1rem",
+                            }}
+                            overlayInnerStyle={{
+                                backgroundColor: "#17a2b8",
+                                color: "white",
+                                border: "none",
+                                minHeight: "10px",
+                            }}
+                            mouseLeaveDelay={0}
+                            placement="bottom"
+                            trigger={["hover"]}
+                            overlay={<span>Aumentar un libro</span>}
+                        >
+                            <AiFillPlusCircle
+                                className="cart-item-icon-increase"
+                                onClick={() => increaseCartQuantity(item.id)}
+                            ></AiFillPlusCircle>
+                        </Tooltip>
                     </div>
-                </div>
-                <div className="cart-item-btn-delete">
-                    <FiDelete
-                        className="icon-delete-item"
-                        title="Eliminar libro del carrito de compras"
-                        onClick={() => removeFromCart(item.id)}
-                    ></FiDelete>
                 </div>
             </div>
         </div>

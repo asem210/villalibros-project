@@ -1,25 +1,19 @@
 .app-container-history {
     display: flex;
     flex-direction: column;
-    height: fit-content;
+    min-height: 100vh;
 }
 
 .app-container-table {
     margin: 20px 0px 20px 0px;
 }
 
-.app-container-history-searchbox{
-  display: flex;
-  width: 50%; 
-  padding-left: 10%;
+.app-container-history-searchbox {
+    display: flex;
+    width: 50%;
+    padding-left: 10%;
 }
 
-.app-container-history-searchbox> div {
-  padding-left: 0;
+.app-container-history-searchbox > div {
+    padding-left: 0;
 }
-
-.app-container-History-footer{
-margin-top: 20px;
-
-}
-

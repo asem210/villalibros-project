@@ -157,13 +157,12 @@ const EditBook: React.FC<Props> = ({ booksSeller }) => {
                         className="goBackTo"
                     />
                     <BiEdit className="icon-edit-field" />
-                    <h2>
-                        EDITAR LIBRO {book!.id}: {book!.title}
-                    </h2>
+
+                    <p>{book!.title}</p>
                 </div>
                 <p className="header-addBookForm-desc">
-                    Edite los datos de este libro rellenando los campos que
-                    desea modificar.
+                    Edite los datos del libro {book!.id} rellenando los campos
+                    que desea modificar.
                 </p>
                 <form className="form-addBook">
                     <div className="body-editBook">

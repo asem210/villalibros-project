@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Props } from "../../../models/interfaces";
 import { useNavigate } from "react-router-dom";
 import { FcUndo } from "react-icons/fc";
 import { FaRegEye } from "react-icons/fa";
-import "../../form/addBook/addBookForm.css";
-import "./detailsBook.css";
+import "../detailsBook/detailsBook.css";
+import users from "../../../models/user.json";
+import "./detailsUserAdmin.css";
 
-const DetailsBook: React.FC<Props> = ({ booksSeller }) => {
+const DetailsUserAdmin: React.FC<{}> = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const idNumber = Number(id);
 
-    let book = booksSeller.find((book) => book.id === idNumber);
+    let user = users.find((user) => user.idcliente === idNumber);
 
     return (
         <div className="app-container-addBook">
@@ -24,67 +24,68 @@ const DetailsBook: React.FC<Props> = ({ booksSeller }) => {
                         className="goBackTo"
                     />
                     <FaRegEye className="icon-see-details" />
-                    <p>{book!.title}</p>
+                    <p>
+                        {user!.nombre} {user!.apellido}
+                    </p>
                 </div>
                 <p className="header-addBookForm-desc">
-                    Información del libro {book!.id}
+                    Información del usuario administrador {user!.idcliente}
                 </p>
 
                 <div className="body-addBookForm-form">
                     <div className="wrapper-details-general wrapper-details-general--bkcolor">
                         <h3 className="subtitle-details">
-                            {" "}
-                            Detalles del libro general
+                            Información del usuario
                         </h3>
                         <div className="body-addBook-details-book-general">
                             <div className="body-addBook-details-book-img">
                                 <h3>Imagen</h3>
                                 <img
-                                    src={book!.image}
+                                    src="https://www.gravatar.com/avatar/1b8fabaa8d66250a7049bdb9ecf44397?s=250&d=mm&r=x"
                                     alt="imagen"
                                     className="form__label--file-selected form__label--file-withoutHover form__label--details"
                                 />
                             </div>
                             <div className="body-addBook-details-book-about">
                                 <div className="form__group">
-                                    <h3>Título </h3>
-                                    <p>{book!.title}</p>
+                                    <h3>Nombres </h3>
+                                    <p>{user!.nombre}</p>
                                 </div>
 
                                 <div className="form__group">
-                                    <h3>Descripción </h3>
-                                    <p>{book!.description}</p>
+                                    <h3>Apellidos</h3>
+                                    <p>{user!.apellido}</p>
                                 </div>
 
                                 <div className="body-addBook-details-book-grid">
-                                    <div className="form__group field">
-                                        <h3>Autor </h3>
-                                        <p>{book!.author}</p>
+                                    <div className="form__group">
+                                        <h3>Dirección</h3>
+                                        <p>
+                                            San Carlos, San Juan de Lurigancho
+                                        </p>
                                     </div>
                                     <div className="form__group field">
-                                        <h3>Editorial </h3>
-                                        <p>{book!.editorial}</p>
+                                        <h3>Correo </h3>
+                                        <p>{user!.correo}</p>
                                     </div>
                                     <div className="form__group field">
-                                        <h3>Año </h3>
-                                        <p>{book!.anyo}</p>
+                                        <h3>DNI </h3>
+                                        <p>{user!.dni}</p>
                                     </div>
-
                                     <div className="form__group field">
-                                        <h3>Idioma</h3>
-                                        <p>{book!.language}</p>
+                                        <h3>Teléfono / Celular </h3>
+                                        <p>{999777666}</p>
                                     </div>
-
                                     <div className="form__group field">
-                                        <h3>Páginas </h3>
-                                        <p>{book!.pages}</p>
+                                        <h3>Fecha de Nacimiento </h3>
+                                        <p>01/01/99</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="wrapper-details-pyshical wrapper-details-pyshical--bkcolor">
+                    {/* <div className="wrapper-details-pyshical wrapper-details-pyshical--bkcolor">
                         <h3 className="subtitle-details">
                             Detalles físicos del libro
                         </h3>
@@ -103,9 +104,9 @@ const DetailsBook: React.FC<Props> = ({ booksSeller }) => {
                                 <p>{book!.height} cm</p>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div className="wrapper-details-selling wrapper-details-selling--bkcolor">
+                    {/* <div className="wrapper-details-selling wrapper-details-selling--bkcolor">
                         <h3 className="subtitle-details">Detalles de venta</h3>
                         <div className="body-addBook-details-book-selling">
                             <div className="form__group field form__group--center">
@@ -125,7 +126,7 @@ const DetailsBook: React.FC<Props> = ({ booksSeller }) => {
                                 <p>50 unidades</p>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/*  <div className="field-edit editBook-age">
@@ -147,4 +148,4 @@ const DetailsBook: React.FC<Props> = ({ booksSeller }) => {
     );
 };
 
-export default DetailsBook;
+export default DetailsUserAdmin;

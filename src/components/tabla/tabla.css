@@ -1,4 +1,7 @@
 .app-container-fila {
+    width: 100%;
+}
+.wrapper-fila {
     width: 80%;
     margin: auto;
 }

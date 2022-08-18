@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { Props } from "../../models/interfaces";
 
+//Tooltip
+import Tooltip from "rc-tooltip";
 export function calculatePriceWithDiscount(
     priceDefault: number,
     percentDiscount: number
@@ -33,12 +35,28 @@ const Card: React.FC<Props> = ({ booksSeller }) => {
                         <div className="title-prevent">
                             <a href={"'#'"}>Preventa</a>
                         </div>
-                        <img
-                            src={book.image}
-                            alt="card"
-                            onClick={() => goToDetailsComp(book.id)}
-                        ></img>
-
+                        <Tooltip
+                            overlayStyle={{
+                                color: "#17a2b8",
+                                borderRadius: "1rem",
+                            }}
+                            overlayInnerStyle={{
+                                backgroundColor: "#17a2b8",
+                                color: "white",
+                                border: "none",
+                                minHeight: "10px",
+                            }}
+                            mouseLeaveDelay={0}
+                            placement="rightBottom"
+                            trigger={["hover"]}
+                            overlay={<span>Click para ver detalles</span>}
+                        >
+                            <img
+                                src={book.image}
+                                alt="card"
+                                onClick={() => goToDetailsComp(book.id)}
+                            ></img>
+                        </Tooltip>
                         <div
                             className="description"
                             onClick={() => goToDetailsComp(book.id)}

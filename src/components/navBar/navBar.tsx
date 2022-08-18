@@ -14,6 +14,9 @@ import { MdOutlineAdminPanelSettings } from "react-icons/md";
 //CSS
 import "./navBar.css";
 import { useShoppingCart } from "../context/ShoppingCartContext";
+import Tooltip from "rc-tooltip";
+
+//Tooltip
 
 export const NavBarDefault: React.FC<{
     userState: boolean;
@@ -44,14 +47,31 @@ export const NavBarDefault: React.FC<{
     return (
         <div className="app-container-navBar-header">
             <div className="app-container-navBar">
-                <div className="app-container-navBar-Logo">
-                    <img
-                        src="https://drive.google.com/uc?export=view&id=1dk1XPtnOFFozdM5gVrO5Jl7poi6hrZLi"
-                        alt="Villalibros Logo"
-                        title="Logo Villalibros"
-                        onClick={() => navigate("/")}
-                    />
-                </div>
+                <Tooltip
+                    overlayStyle={{
+                        color: "#17a2b8",
+                        borderRadius: "1rem",
+                    }}
+                    overlayInnerStyle={{
+                        backgroundColor: "#17a2b8",
+                        color: "white",
+                        border: "none",
+                        minHeight: "10px",
+                    }}
+                    mouseLeaveDelay={0}
+                    placement="bottom"
+                    trigger={["hover"]}
+                    overlay={<span>Click para ir al Inicio</span>}
+                >
+                    <div className="app-container-navBar-Logo">
+                        <img
+                            src="https://drive.google.com/uc?export=view&id=1dk1XPtnOFFozdM5gVrO5Jl7poi6hrZLi"
+                            alt="Villalibros Logo"
+                            title="Logo Villalibros"
+                            onClick={() => navigate("/")}
+                        />
+                    </div>
+                </Tooltip>
 
                 <div className="app-container-navBar-searchbox">
                     <Searchbox
@@ -61,69 +81,145 @@ export const NavBarDefault: React.FC<{
                 </div>
 
                 <div className="app-container-navBar-links">
-                    <div className="app-container-navBar-login-register">
-                        <div className="app-container-navBar-user">
-                            <BsPersonCircle
-                                className="icon icon-user"
-                                onClick={() => SetModalStateLogin(true)}
+                    <Tooltip
+                        overlayStyle={{
+                            color: "#17a2b8",
+                            borderRadius: "1rem",
+                        }}
+                        overlayInnerStyle={{
+                            backgroundColor: "#17a2b8",
+                            color: "white",
+                            border: "none",
+                            width: "12rem",
+                            minHeight: "10px",
+                        }}
+                        mouseLeaveDelay={0}
+                        placement="bottom"
+                        trigger={["hover"]}
+                        overlay={
+                            <span>
+                                ¿Tienes cuenta? Accede desde aquí. Y si no lo
+                                tienes ¡Click para registrarte!
+                            </span>
+                        }
+                    >
+                        <div className="app-container-navBar-login-register">
+                            <div className="app-container-navBar-user">
+                                <BsPersonCircle
+                                    className="icon icon-user"
+                                    onClick={() => SetModalStateLogin(true)}
+                                />
+                                {userState ? (
+                                    <p onClick={MostrarState}>{userValue}</p>
+                                ) : (
+                                    <p onClick={() => SetModalStateLogin(true)}>
+                                        Iniciar Sesión / Registrarse
+                                    </p>
+                                )}
+                            </div>
+
+                            <ModalLogin
+                                state={modalStateLogin}
+                                handleChange={SetModalStateLogin}
+                                registerState={modalStateRegister}
+                                handleRegister={SetModalStateRegister}
+                                userState={userState}
+                                setUserState={(txt: boolean) =>
+                                    setUserState(txt)
+                                }
+                                emailValue={emailValue}
+                                setEmail={(txt: string) => setEmailValue(txt)}
+                                setUserValue={(txt: string) =>
+                                    setUserValue(txt)
+                                }
                             />
+
+                            <ModalRegister
+                                state={modalStateLogin}
+                                handleChange={SetModalStateLogin}
+                                registerState={modalStateRegister}
+                                handleRegister={SetModalStateRegister}
+                            />
+                        </div>
+                    </Tooltip>
+
+                    <Tooltip
+                        overlayStyle={{
+                            color: "#17a2b8",
+                            borderRadius: "1rem",
+                        }}
+                        overlayInnerStyle={{
+                            backgroundColor: "#17a2b8",
+                            color: "white",
+                            border: "none",
+                            width: "12rem",
+                            minHeight: "10px",
+                        }}
+                        mouseLeaveDelay={0}
+                        placement="bottom"
+                        trigger={["hover"]}
+                        overlay={
+                            <span>
+                                ¡Click para ver todos los libros que te haz
+                                prestado, recuerda iniciar sesión!
+                            </span>
+                        }
+                    >
+                        <div className="app-container-navBar-history">
+                            <BiCalendar className="icon icon-history" />
                             {userState ? (
-                                <p onClick={MostrarState}>{userValue}</p>
+                                <p onClick={toHistory}>
+                                    Historial de Préstamos
+                                </p>
                             ) : (
-                                <p onClick={() => SetModalStateLogin(true)}>
-                                    Iniciar Sesión / Registrarse
+                                <p
+                                    onClick={() =>
+                                        alert("No se encuentra registrado")
+                                    }
+                                >
+                                    Historial de Préstamos
                                 </p>
                             )}
                         </div>
+                    </Tooltip>
 
-                        <ModalLogin
-                            state={modalStateLogin}
-                            handleChange={SetModalStateLogin}
-                            registerState={modalStateRegister}
-                            handleRegister={SetModalStateRegister}
-                            userState={userState}
-                            setUserState={(txt: boolean) => setUserState(txt)}
-                            emailValue={emailValue}
-                            setEmail={(txt: string) => setEmailValue(txt)}
-                            setUserValue={(txt: string) => setUserValue(txt)}
-                        />
-
-                        <ModalRegister
-                            state={modalStateLogin}
-                            handleChange={SetModalStateLogin}
-                            registerState={modalStateRegister}
-                            handleRegister={SetModalStateRegister}
-                        />
-                    </div>
-                    <div className="app-container-navBar-history">
-                        <BiCalendar className="icon icon-history" />
-                        {userState ? (
-                            <p onClick={toHistory}>Historial de Préstamos</p>
-                        ) : (
-                            <p
-                                onClick={() =>
-                                    alert("No se encuentra registrado")
-                                }
-                            >
-                                Historial de Préstamos
-                            </p>
-                        )}
-                    </div>
-
-                    <div
-                        className="app-container-navBar-cart"
-                        onClick={openCart}
+                    <Tooltip
+                        overlayStyle={{
+                            color: "#17a2b8",
+                            borderRadius: "1rem",
+                        }}
+                        overlayInnerStyle={{
+                            backgroundColor: "#17a2b8",
+                            color: "white",
+                            border: "none",
+                            width: "12rem",
+                            minHeight: "10px",
+                        }}
+                        mouseLeaveDelay={0}
+                        placement="bottom"
+                        trigger={["hover"]}
+                        overlay={
+                            <span>
+                                El Carrito de Compras contiene los libros que
+                                has ordenado. ¡Accede para finalizar tu compra!
+                            </span>
+                        }
                     >
-                        <div className="counter-orders">
-                            <BsCart className="icon icon-cart" />
-                            {cartQuantity > 0 && (
-                                <span className="cart-badge">
-                                    {cartQuantity}
-                                </span>
-                            )}
+                        <div
+                            className="app-container-navBar-cart"
+                            onClick={openCart}
+                        >
+                            <div className="counter-orders">
+                                <BsCart className="icon icon-cart" />
+                                {cartQuantity > 0 && (
+                                    <span className="cart-badge">
+                                        {cartQuantity}
+                                    </span>
+                                )}
+                            </div>
+                            <p>Carrito de Compras</p>
                         </div>
-                        <p>Carrito de Compras</p>
-                    </div>
+                    </Tooltip>
 
                     {userState && (
                         <div className="app-container-navBar-admin-options">

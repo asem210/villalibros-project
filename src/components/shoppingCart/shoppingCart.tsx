@@ -6,6 +6,7 @@ import books from "../../models/books.json";
 import { calculatePriceWithDiscount } from "../card/card";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import Tooltip from "rc-tooltip";
 
 type ShoppingCartProps = {
     isOpen: boolean;
@@ -24,11 +25,29 @@ const ShoppingCart = ({ isOpen }: ShoppingCartProps) => {
                     ></div>
                     <div className="wrapper-shopping-cart">
                         <div className="shopping-cart-head">
-                            <FcUndo
-                                className="shopping-card-head-return"
-                                title="Cerrar carrito"
-                                onClick={closeCart}
-                            />
+                            <Tooltip
+                                overlayStyle={{
+                                    color: "#17a2b8",
+                                    borderRadius: "1rem",
+                                }}
+                                overlayInnerStyle={{
+                                    backgroundColor: "#17a2b8",
+                                    color: "white",
+                                    border: "none",
+
+                                    minHeight: "10px",
+                                }}
+                                mouseLeaveDelay={0}
+                                placement="bottom"
+                                trigger={["hover"]}
+                                overlay={<span>Regresar</span>}
+                            >
+                                <FcUndo
+                                    className="shopping-card-head-return"
+                                    onClick={closeCart}
+                                />
+                            </Tooltip>
+
                             <h1>CARRITO DE COMPRAS</h1>
                         </div>
                         {cartQuantity === 0 ? (

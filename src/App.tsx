@@ -27,9 +27,14 @@ import { AdminPage } from "./pages/adminPage/AdminPage";
 import { AddBookPage } from "./pages/addBookPage/AddBookPage";
 import { EditBookPage } from "./pages/editBookPage/EditBookPage";
 import { DetailsBookPage } from "./pages/detailsBookPage/DetailsBookPage";
-import Filter from "./components/filters/Filter";
-import CategoryListCards from "./components/categoryListCards/CategoryListCards";
+
 import { CategoryPage } from "./pages/categoryPage/CategoryPage";
+
+import { AddUserAdminPage } from "./pages/addUserAdminPage/AddUserAdminPage";
+
+import { EditUserAdminPage } from "./pages/editUserAdminPage/EditUserAdminPage";
+
+import { DetailsUserAdminPage } from "./pages/detailsUserAdminPage/DetailsUserAdminPage";
 
 // =======
 
@@ -224,6 +229,53 @@ function App() {
                             path="/categoryCard"
                             element={
                                 <CategoryPage
+                                    userState={userLoggedIn}
+                                    setUserState={(txt: boolean) =>
+                                        setUserLoggedIn(txt)
+                                    }
+                                    setUserValue={(txt: string) =>
+                                        setUserValue(txt)
+                                    }
+                                    userValue={userValue}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/addUserAdmin"
+                            element={
+                                <AddUserAdminPage
+                                    userState={userLoggedIn}
+                                    setUserState={(txt: boolean) =>
+                                        setUserLoggedIn(txt)
+                                    }
+                                    setUserValue={(txt: string) =>
+                                        setUserValue(txt)
+                                    }
+                                    userValue={userValue}
+                                />
+                            }
+                        />
+
+                        <Route
+                            path="/editUserAdmin/:id"
+                            element={
+                                <EditUserAdminPage
+                                    userState={userLoggedIn}
+                                    setUserState={(txt: boolean) =>
+                                        setUserLoggedIn(txt)
+                                    }
+                                    setUserValue={(txt: string) =>
+                                        setUserValue(txt)
+                                    }
+                                    userValue={userValue}
+                                />
+                            }
+                        />
+
+                        <Route
+                            path="/detailsUserAdmin/:id"
+                            element={
+                                <DetailsUserAdminPage
                                     userState={userLoggedIn}
                                     setUserState={(txt: boolean) =>
                                         setUserLoggedIn(txt)

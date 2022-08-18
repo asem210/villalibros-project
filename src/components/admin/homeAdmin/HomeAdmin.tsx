@@ -15,6 +15,9 @@ import { FaUsers } from "react-icons/fa";
 //Dialog
 import Dialog from "../../dialog/Dialog";
 
+//Tooltip
+import Tooltip from "rc-tooltip";
+
 export const HomeAdmin: React.FC<{}> = () => {
     const navigate = useNavigate();
     const [booksSeller, setBooksSeller] = useState<Array<Book>>([]);
@@ -26,15 +29,23 @@ export const HomeAdmin: React.FC<{}> = () => {
     }, []);
 
     const [showTaskDialog, setShowTaskDialog] = useState(false);
+    const [showTaskDialogUserAdmin, setShowTaskDialogUserAdmin] =
+        useState(false);
 
     const confirm = () => {
-        console.log("confirm");
         setShowTaskDialog(false);
     };
 
     const cancel = () => {
-        console.log("cancelar");
         setShowTaskDialog(false);
+    };
+
+    const confirmUserAdmin = () => {
+        setShowTaskDialogUserAdmin(false);
+    };
+
+    const cancelUserAdmin = () => {
+        setShowTaskDialogUserAdmin(false);
     };
 
     return (
@@ -48,19 +59,31 @@ export const HomeAdmin: React.FC<{}> = () => {
                     <div className="container-manage-books-header">
                         <GiBlackBook />
                         <h3>Gestionar Libros</h3>
-
-                        <button
-                            className="btns-manage-add"
-                            onClick={() => navigate("/addBook")}
+                        <Tooltip
+                            overlayStyle={{
+                                color: "#17a2b8",
+                                borderRadius: "1rem",
+                            }}
+                            overlayInnerStyle={{
+                                backgroundColor: "#17a2b8",
+                                color: "white",
+                                border: "none",
+                                minHeight: "10px",
+                            }}
+                            mouseLeaveDelay={0}
+                            placement="bottom"
+                            trigger={["hover"]}
+                            overlay={<span>Click para añadir un libro</span>}
                         >
-                            Añadir Libro
-                        </button>
+                            <button
+                                className="btns-manage-add"
+                                onClick={() => navigate("/addBook")}
+                            >
+                                Añadir Libro
+                            </button>
+                        </Tooltip>
                     </div>
 
-                    {/*   <ModalAddBook
-                        state={modalStateAddBook}
-                        handleChange={setModalStateAddBook}
-                    /> */}
                     <div className="table-container">
                         <table>
                             <thead>
@@ -90,41 +113,118 @@ export const HomeAdmin: React.FC<{}> = () => {
                                             <td>50</td>
                                             <td className="wrapper-btns-manage">
                                                 <ul className="btns-manage">
-                                                    <li
-                                                        className="btns-manage-edit"
-                                                        onClick={() =>
-                                                            navigate(
-                                                                `/editBook/${book.id}`
-                                                            )
+                                                    <Tooltip
+                                                        overlayStyle={{
+                                                            color: "#17a2b8",
+                                                            borderRadius:
+                                                                "1rem",
+                                                        }}
+                                                        overlayInnerStyle={{
+                                                            backgroundColor:
+                                                                "#17a2b8",
+                                                            color: "white",
+                                                            border: "none",
+                                                            minHeight: "10px",
+                                                        }}
+                                                        mouseLeaveDelay={0}
+                                                        placement="bottom"
+                                                        trigger={["hover"]}
+                                                        overlay={
+                                                            <span>
+                                                                Click para
+                                                                editar libro{" "}
+                                                                {book.id}
+                                                            </span>
                                                         }
                                                     >
-                                                        Editar
-                                                    </li>
+                                                        <li
+                                                            className="btns-manage-edit"
+                                                            onClick={() =>
+                                                                navigate(
+                                                                    `/editBook/${book.id}`
+                                                                )
+                                                            }
+                                                        >
+                                                            Editar
+                                                        </li>
+                                                    </Tooltip>
 
-                                                    <li
-                                                        className="btns-manage-detail"
-                                                        onClick={() =>
-                                                            navigate(
-                                                                `/detailsBook/${book.id}`
-                                                            )
+                                                    <Tooltip
+                                                        overlayStyle={{
+                                                            color: "#17a2b8",
+                                                            borderRadius:
+                                                                "1rem",
+                                                        }}
+                                                        overlayInnerStyle={{
+                                                            backgroundColor:
+                                                                "#17a2b8",
+                                                            color: "white",
+                                                            border: "none",
+                                                            minHeight: "10px",
+                                                        }}
+                                                        mouseLeaveDelay={0}
+                                                        placement="bottom"
+                                                        trigger={["hover"]}
+                                                        overlay={
+                                                            <span>
+                                                                Click para ver
+                                                                detalles del
+                                                                libro {book.id}
+                                                            </span>
                                                         }
                                                     >
-                                                        Detalles
-                                                    </li>
-                                                    <li
-                                                        className="btns-manage-delete"
-                                                        onClick={() =>
-                                                            setShowTaskDialog(
-                                                                true
-                                                            )
+                                                        <li
+                                                            className="btns-manage-detail"
+                                                            onClick={() =>
+                                                                navigate(
+                                                                    `/detailsBook/${book.id}`
+                                                                )
+                                                            }
+                                                        >
+                                                            Detalles
+                                                        </li>
+                                                    </Tooltip>
+
+                                                    <Tooltip
+                                                        overlayStyle={{
+                                                            color: "#17a2b8",
+                                                            borderRadius:
+                                                                "1rem",
+                                                        }}
+                                                        overlayInnerStyle={{
+                                                            backgroundColor:
+                                                                "#17a2b8",
+                                                            color: "white",
+                                                            border: "none",
+                                                            minHeight: "10px",
+                                                        }}
+                                                        mouseLeaveDelay={0}
+                                                        placement="bottom"
+                                                        trigger={["hover"]}
+                                                        overlay={
+                                                            <span>
+                                                                ¡Cuidado! Click
+                                                                para eliminar el
+                                                                libro {book.id}
+                                                            </span>
                                                         }
                                                     >
-                                                        Eliminar
-                                                    </li>
+                                                        <li
+                                                            className="btns-manage-delete"
+                                                            onClick={() =>
+                                                                setShowTaskDialog(
+                                                                    true
+                                                                )
+                                                            }
+                                                        >
+                                                            Eliminar
+                                                        </li>
+                                                    </Tooltip>
+
                                                     <Dialog
                                                         show={showTaskDialog}
                                                         title="Eliminar libro"
-                                                        description="¿Estás segurto de eliminar este libro?"
+                                                        description={`¿Estás seguro de eliminar este libro?`}
                                                         confirm={confirm}
                                                         cancel={cancel}
                                                     />
@@ -142,18 +242,31 @@ export const HomeAdmin: React.FC<{}> = () => {
                     <div className="container-manage-users-header">
                         <FaUsers />
                         <h3>Gestionar Usuarios Administradores</h3>
-                        <button
-                            className="btns-manage-add"
-                            onClick={() => navigate("/addBook")}
+                        <Tooltip
+                            overlayStyle={{
+                                color: "#17a2b8",
+                                borderRadius: "1rem",
+                            }}
+                            overlayInnerStyle={{
+                                backgroundColor: "#17a2b8",
+                                color: "white",
+                                border: "none",
+                                minHeight: "10px",
+                            }}
+                            mouseLeaveDelay={0}
+                            placement="bottom"
+                            trigger={["hover"]}
+                            overlay={<span>Click para añadior un usuario</span>}
                         >
-                            Añadir Usuario Admin
-                        </button>
+                            <button
+                                className="btns-manage-add"
+                                onClick={() => navigate("/addUserAdmin")}
+                            >
+                                Añadir Usuario Admin
+                            </button>
+                        </Tooltip>
                     </div>
 
-                    {/*   <ModalAddBook
-                        state={modalStateAddBook}
-                        handleChange={setModalStateAddBook}
-                    /> */}
                     <div className="table-container">
                         <table>
                             <thead>
@@ -181,16 +294,127 @@ export const HomeAdmin: React.FC<{}> = () => {
                                             <td>{user.correo}</td>
                                             <td className="wrapper-btns-manage">
                                                 <ul className="btns-manage">
-                                                    <li className="btns-manage-edit">
-                                                        Editar
-                                                    </li>
+                                                    <Tooltip
+                                                        overlayStyle={{
+                                                            color: "#17a2b8",
+                                                            borderRadius:
+                                                                "1rem",
+                                                        }}
+                                                        overlayInnerStyle={{
+                                                            backgroundColor:
+                                                                "#17a2b8",
+                                                            color: "white",
+                                                            border: "none",
+                                                            minHeight: "10px",
+                                                        }}
+                                                        mouseLeaveDelay={0}
+                                                        placement="bottom"
+                                                        trigger={["hover"]}
+                                                        overlay={
+                                                            <span>
+                                                                Click para
+                                                                editar usuario{" "}
+                                                                {user.idcliente}
+                                                            </span>
+                                                        }
+                                                    >
+                                                        <li
+                                                            className="btns-manage-edit"
+                                                            onClick={() =>
+                                                                navigate(
+                                                                    `/editUserAdmin/${user.idcliente}`
+                                                                )
+                                                            }
+                                                        >
+                                                            Editar
+                                                        </li>
+                                                    </Tooltip>
 
-                                                    <li className="btns-manage-detail">
-                                                        Detalles
-                                                    </li>
-                                                    <li className="btns-manage-delete">
-                                                        Eliminar
-                                                    </li>
+                                                    <Tooltip
+                                                        overlayStyle={{
+                                                            color: "#17a2b8",
+                                                            borderRadius:
+                                                                "1rem",
+                                                        }}
+                                                        overlayInnerStyle={{
+                                                            backgroundColor:
+                                                                "#17a2b8",
+                                                            color: "white",
+                                                            border: "none",
+                                                            minHeight: "10px",
+                                                        }}
+                                                        mouseLeaveDelay={0}
+                                                        placement="bottom"
+                                                        trigger={["hover"]}
+                                                        overlay={
+                                                            <span>
+                                                                Click para ver
+                                                                detalles del
+                                                                usuario{" "}
+                                                                {user.idcliente}
+                                                            </span>
+                                                        }
+                                                    >
+                                                        <li
+                                                            className="btns-manage-detail"
+                                                            onClick={() =>
+                                                                navigate(
+                                                                    `/detailsUserAdmin/${user.idcliente}`
+                                                                )
+                                                            }
+                                                        >
+                                                            Detalles
+                                                        </li>
+                                                    </Tooltip>
+
+                                                    <Tooltip
+                                                        overlayStyle={{
+                                                            color: "#17a2b8",
+                                                            borderRadius:
+                                                                "1rem",
+                                                        }}
+                                                        overlayInnerStyle={{
+                                                            backgroundColor:
+                                                                "#17a2b8",
+                                                            color: "white",
+                                                            border: "none",
+                                                            minHeight: "10px",
+                                                        }}
+                                                        mouseLeaveDelay={0}
+                                                        placement="bottom"
+                                                        trigger={["hover"]}
+                                                        overlay={
+                                                            <span>
+                                                                ¡Cuidado! Click
+                                                                para eliminar al
+                                                                usuario{" "}
+                                                                {user.idcliente}
+                                                            </span>
+                                                        }
+                                                    >
+                                                        <li
+                                                            className="btns-manage-delete"
+                                                            onClick={() =>
+                                                                setShowTaskDialogUserAdmin(
+                                                                    true
+                                                                )
+                                                            }
+                                                        >
+                                                            Eliminar
+                                                        </li>
+                                                    </Tooltip>
+
+                                                    <Dialog
+                                                        show={
+                                                            showTaskDialogUserAdmin
+                                                        }
+                                                        title="Eliminar Usuario Administrador"
+                                                        description={`¿Estás seguro de eliminar este usuario administrador?`}
+                                                        confirm={
+                                                            confirmUserAdmin
+                                                        }
+                                                        cancel={cancelUserAdmin}
+                                                    />
                                                 </ul>
                                             </td>
                                         </tr>

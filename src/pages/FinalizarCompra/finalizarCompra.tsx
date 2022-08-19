@@ -9,6 +9,7 @@ import { InputDefault, InputPassword } from "../../components/input/input";
 import { ButtonComprar, ButtonDescuento } from "../../components/button/button";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useShoppingCart } from "../../components/context/ShoppingCartContext";
 export const FinalizarCompra: React.FC<{
     userState: boolean;
     setUserState: (txt: boolean) => void;
@@ -32,7 +33,7 @@ export const FinalizarCompra: React.FC<{
 
     const [cuponValue, setcuponValue] = useState("");
     const [cuponState, setcuponState] = useState(false);
-
+    const { cartItems, removeFromCart } = useShoppingCart();
     const CuponLogic = (codigo: boolean) => {
         if (codigo === true) {
             toast.success("Cupon aplicado");
@@ -40,6 +41,10 @@ export const FinalizarCompra: React.FC<{
     };
 
     const navigate = useNavigate();
+
+    const deleteAllItems = () => {
+        cartItems.map((item) => removeFromCart(item.id));
+    };
 
     const ComprarLogic = (
         name: boolean,
@@ -198,15 +203,16 @@ export const FinalizarCompra: React.FC<{
                                     codigo: boolean,
                                     cvv: boolean,
                                     fechaven: boolean
-                                ) =>
+                                ) => {
                                     ComprarLogic(
                                         name,
                                         lastname,
                                         codigo,
                                         cvv,
                                         fechaven
-                                    )
-                                }
+                                    );
+                                    deleteAllItems();
+                                }}
                             />
                         </div>
                     </div>

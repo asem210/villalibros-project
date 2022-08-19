@@ -4,7 +4,9 @@ import { IoIosArrowDown } from "react-icons/io";
 const Dropdown: React.FC<{
     items: Array<String>;
     title: string;
-}> = ({ title, items }) => {
+    userState: boolean;
+    setUserState: (txt: boolean) => void;
+}> = ({ title, items, userState, setUserState }) => {
     const [state, setState] = useState(false);
 
     const shownDropdown = () => {
@@ -18,6 +20,14 @@ const Dropdown: React.FC<{
     const handleClick = () => {
         state ? hideDropdown() : shownDropdown();
     };
+
+    const logOut = () => {
+        const item = items.find((item) => item === "Cerrar Sesión");
+        if (item) {
+            setUserState(false);
+        }
+    };
+
     let key = 0;
     return (
         <div className="dropdown">
@@ -25,10 +35,14 @@ const Dropdown: React.FC<{
                 <span className="dropdown-title">{title}</span>
                 <IoIosArrowDown className="dropdown-icon" />
                 {state ? (
-                    <ul className="dropdown-list" onMouseOver={shownDropdown}>
+                    <ul className="dropdown-list">
                         {items.map((item) => {
                             return (
-                                <li className="dropdown-item" key={key++}>
+                                <li
+                                    className="dropdown-item"
+                                    key={key++}
+                                    onClick={() => logOut()}
+                                >
                                     {item}
                                 </li>
                             );

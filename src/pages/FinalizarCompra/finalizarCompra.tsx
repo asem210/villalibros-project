@@ -7,7 +7,6 @@ import { Footer } from "../../components/footer/footer";
 import "./finalizarComprar.css";
 import { InputDefault, InputPassword } from "../../components/input/input";
 import { ButtonComprar, ButtonDescuento } from "../../components/button/button";
-import { toaster } from "rsuite";
 import toast from "react-hot-toast";
 export const FinalizarCompra: React.FC<{
     userState: boolean;
@@ -95,7 +94,7 @@ export const FinalizarCompra: React.FC<{
                         </div>
                         <label>
                             Solicitamos la información necesario para finalizar
-                            la compra
+                            el préstamo de los libros
                         </label>
                         <div className="app-container-form-comprar">
                             <div className="app-container-nombre-apelliado">
@@ -242,7 +241,7 @@ export const FinalizarCompra: React.FC<{
                         </div>
 
                         <div className="app-container-Resumen">
-                            <label>Resumen de la compra</label>
+                            <label>Resumen del Préstamo</label>
 
                             <div className="app-container-barra"></div>
 

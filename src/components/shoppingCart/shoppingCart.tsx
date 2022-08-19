@@ -23,7 +23,7 @@ const ShoppingCart = ({ isOpen, stateLogin }: ShoppingCartProps) => {
         if (stateLogin === true) {
             navigate("/finalizarCompra");
         } else {
-            toast("Inicia Sesión para finalizar tu compra");
+            toast("Inicia Sesión para finalizar tu préstamo");
         }
     };
     return (
@@ -45,7 +45,6 @@ const ShoppingCart = ({ isOpen, stateLogin }: ShoppingCartProps) => {
                                     backgroundColor: "#17a2b8",
                                     color: "white",
                                     border: "none",
-
                                     minHeight: "10px",
                                 }}
                                 mouseLeaveDelay={0}

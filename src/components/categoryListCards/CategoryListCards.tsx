@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Filter from "../filters/Filter";
 import Card from "../card/card";
-import books from "../../models/books.json";
-import { Book } from "../listCards/cards";
 
 import "./categoryListCards.css";
 import Dropdown from "../dropdown/Dropdown";
@@ -12,6 +10,7 @@ const CategoryListCards: React.FC<PropsWithUserState> = (
     { booksSeller },
     userState: boolean
 ) => {
+    const nothing = () => {};
     return (
         <div className="app-container-categoryListCards">
             <div className="wrapper-categoryListCards">
@@ -32,6 +31,8 @@ const CategoryListCards: React.FC<PropsWithUserState> = (
                                     "Ordenar título de A-Z",
                                     "Ordenar título de Z-A",
                                 ]}
+                                userState={userState}
+                                setUserState={nothing}
                             />
                         </div>
                     </div>

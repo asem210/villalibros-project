@@ -6,13 +6,13 @@
 .app-container-navBar {
     width: 80%;
     display: grid;
-    grid-template-columns: 12rem repeat(auto-fit, minmax(15rem, 1fr));
+    grid-template-columns: 12rem 30rem 1fr;
     align-items: center;
     margin: 0 auto;
 }
 
 .app-container-navBar-searchbox {
-    width: 95%;
+    width: 100%;
     margin-right: 10px;
 }
 

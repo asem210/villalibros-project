@@ -27,10 +27,7 @@ export function useShoppingCart() {
     return useContext(ShoppingCartContext);
 }
 
-export function ShoppingCartProvider(
-    { children }: ShoppingCartProviderProps,
-    stateLogin: boolean
-) {
+export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     const [userStateLogin, setUserStateLogin] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 

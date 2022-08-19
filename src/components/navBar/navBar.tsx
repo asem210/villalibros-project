@@ -22,6 +22,8 @@ import { toast } from "react-hot-toast";
 //User
 import users from "../../models/user.json";
 
+import Dropdown from "../dropdown/Dropdown";
+
 export const NavBarDefault: React.FC<{
     userState: boolean;
     setUserState: (txt: boolean) => void;
@@ -90,41 +92,21 @@ export const NavBarDefault: React.FC<{
                 </div>
 
                 <div className="app-container-navBar-links">
-                    <Tooltip
-                        overlayStyle={{
-                            color: "#17a2b8",
-                            borderRadius: "1rem",
-                        }}
-                        overlayInnerStyle={{
-                            backgroundColor: "#17a2b8",
-                            color: "white",
-                            border: "none",
-                            width: "12rem",
-                            minHeight: "10px",
-                        }}
-                        mouseLeaveDelay={0}
-                        placement="bottom"
-                        trigger={["hover"]}
-                        overlay={
-                            <span>
-                                ¿Tienes cuenta? Accede desde aquí. Y si no lo
-                                tienes ¡Click para registrarte!
-                            </span>
-                        }
-                    >
+                    {userState ? (
                         <div className="app-container-navBar-login-register">
                             <div className="app-container-navBar-user">
                                 <BsPersonCircle
                                     className="icon icon-user"
                                     onClick={() => SetModalStateLogin(true)}
                                 />
-                                {userState ? (
-                                    <p onClick={MostrarState}>{userValue}</p>
-                                ) : (
-                                    <p onClick={() => SetModalStateLogin(true)}>
-                                        Iniciar Sesión / Registrarse
-                                    </p>
-                                )}
+
+                                {/* <p onClick={MostrarState}>{userValue}</p>  */}
+                                <Dropdown
+                                    title={userValue}
+                                    items={["Cerrar Sesión"]}
+                                    userState={userState}
+                                    setUserState={setUserState}
+                                />
                             </div>
 
                             <ModalLogin
@@ -150,7 +132,68 @@ export const NavBarDefault: React.FC<{
                                 handleRegister={SetModalStateRegister}
                             />
                         </div>
-                    </Tooltip>
+                    ) : (
+                        <Tooltip
+                            overlayStyle={{
+                                color: "#17a2b8",
+                                borderRadius: "1rem",
+                            }}
+                            overlayInnerStyle={{
+                                backgroundColor: "#17a2b8",
+                                color: "white",
+                                border: "none",
+                                width: "12rem",
+                                minHeight: "10px",
+                            }}
+                            mouseLeaveDelay={0}
+                            placement="bottom"
+                            trigger={["hover"]}
+                            overlay={
+                                <span>
+                                    ¿Tienes cuenta? Accede desde aquí. Y si no
+                                    lo tienes ¡Click para registrarte!
+                                </span>
+                            }
+                        >
+                            <div className="app-container-navBar-login-register">
+                                <div className="app-container-navBar-user">
+                                    <BsPersonCircle
+                                        className="icon icon-user"
+                                        onClick={() => SetModalStateLogin(true)}
+                                    />
+
+                                    <p onClick={() => SetModalStateLogin(true)}>
+                                        Iniciar Sesión / Registrarse
+                                    </p>
+                                </div>
+
+                                <ModalLogin
+                                    state={modalStateLogin}
+                                    handleChange={SetModalStateLogin}
+                                    registerState={modalStateRegister}
+                                    handleRegister={SetModalStateRegister}
+                                    userState={userState}
+                                    setUserState={(txt: boolean) =>
+                                        setUserState(txt)
+                                    }
+                                    emailValue={emailValue}
+                                    setEmail={(txt: string) =>
+                                        setEmailValue(txt)
+                                    }
+                                    setUserValue={(txt: string) =>
+                                        setUserValue(txt)
+                                    }
+                                />
+
+                                <ModalRegister
+                                    state={modalStateLogin}
+                                    handleChange={SetModalStateLogin}
+                                    registerState={modalStateRegister}
+                                    handleRegister={SetModalStateRegister}
+                                />
+                            </div>
+                        </Tooltip>
+                    )}
 
                     <Tooltip
                         overlayStyle={{
@@ -183,8 +226,8 @@ export const NavBarDefault: React.FC<{
                             ) : (
                                 <p
                                     onClick={() =>
-                                        toast.error(
-                                            "No se encuentra registrado"
+                                        toast(
+                                            "Inicia sesión para acceder a tu historial"
                                         )
                                     }
                                 >

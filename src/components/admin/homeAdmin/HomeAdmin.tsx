@@ -256,7 +256,7 @@ export const HomeAdmin: React.FC<{}> = () => {
                             mouseLeaveDelay={0}
                             placement="bottom"
                             trigger={["hover"]}
-                            overlay={<span>Click para añadior un usuario</span>}
+                            overlay={<span>Click para añadir un usuario</span>}
                         >
                             <button
                                 className="btns-manage-add"

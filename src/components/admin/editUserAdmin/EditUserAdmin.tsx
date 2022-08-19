@@ -7,6 +7,7 @@ import { BiEdit } from "react-icons/bi";
 import users from "../../../models/user.json";
 import "../editBook/editBook.css";
 import "../../form/addBook/addBookForm.css";
+import toast from "react-hot-toast";
 
 const EditUserAdmin: React.FC<{}> = () => {
     const navigate = useNavigate();
@@ -70,7 +71,7 @@ const EditUserAdmin: React.FC<{}> = () => {
     };
 
     const saveChanges = () => {
-        alert("Cambios Exitosos");
+        toast.success("Cambios Exitosos");
     };
 
     const imageChange = (e: React.ChangeEvent<HTMLInputElement>) => {

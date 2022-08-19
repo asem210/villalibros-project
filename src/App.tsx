@@ -36,6 +36,8 @@ import { EditUserAdminPage } from "./pages/editUserAdminPage/EditUserAdminPage";
 
 import { DetailsUserAdminPage } from "./pages/detailsUserAdminPage/DetailsUserAdminPage";
 
+import { Toaster } from "react-hot-toast";
+
 // =======
 
 // >>>>>>> origin
@@ -294,6 +296,33 @@ function App() {
                     element={<Navigate to={userLoggedIn ? "/history" : "/"} />}
                 />
             </Routes>
+            <Toaster
+                toastOptions={{
+                    // Define default options
+                    className: "",
+                    duration: 5000,
+                    style: {
+                        background: "teal",
+                        color: "#fff",
+                    },
+
+                    // Default options for specific types
+                    error: {
+                        duration: 3000,
+                        style: {
+                            background: "#f44336",
+                            color: "#fff",
+                        },
+                    },
+                    success: {
+                        duration: 3000,
+                        style: {
+                            background: "green",
+                            color: "#fff",
+                        },
+                    },
+                }}
+            ></Toaster>
         </ShoppingCartProvider>
     );
 }

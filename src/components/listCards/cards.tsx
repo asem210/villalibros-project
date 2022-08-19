@@ -3,6 +3,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import "./cards.css";
 import Card from "../card/card";
 import books from "../../models/books.json";
+import { PropsWithUserState } from "../../models/interfaces";
 
 export interface Book {
     id: number;
@@ -25,20 +26,20 @@ export interface Book {
     age: string;
 }
 
-const Cards = () => {
-    const [booksSeller, setBooksSeller] = useState<Array<Book>>([]);
-
-    useEffect(() => {
-        setBooksSeller(books);
-    }, []);
-
+const Cards: React.FC<PropsWithUserState> = (
+    { booksSeller },
+    userState: boolean
+) => {
     return (
         <Fragment>
             <main>
                 <div className="secc">
                     <div className="container">
                         <h1>Los más destacados</h1>
-                        <Card booksSeller={booksSeller}></Card>
+                        <Card
+                            booksSeller={booksSeller}
+                            userState={userState}
+                        ></Card>
                     </div>
                 </div>
             </main>

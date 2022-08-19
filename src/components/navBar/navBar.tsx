@@ -16,7 +16,11 @@ import "./navBar.css";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import Tooltip from "rc-tooltip";
 
-//Tooltip
+//Toast
+import { toast } from "react-hot-toast";
+
+//User
+import users from "../../models/user.json";
 
 export const NavBarDefault: React.FC<{
     userState: boolean;
@@ -28,21 +32,26 @@ export const NavBarDefault: React.FC<{
     const navigate = useNavigate();
     const [modalStateRegister, SetModalStateRegister] = useState(false);
     const [emailValue, setEmailValue] = useState("");
+
     const { openCart, cartQuantity } = useShoppingCart();
 
     const toHistory = () => {
         navigate("/history");
     };
 
-    const toComprar = () => {
-        navigate("/finalizarCompra");
-    };
-
     const MostrarState = () => {
-        alert(userState);
+        userState ? toast("Estás en tu cuenta") : toast("Inicia sesión");
     };
 
-    const MostrarMensaje = () => {};
+    const user = users.find((user) => user.correo === userValue);
+
+    const returnUserAdmin = () => {
+        if (user?.role === "ADMIN") {
+            return true;
+        } else {
+            return false;
+        }
+    };
 
     return (
         <div className="app-container-navBar-header">
@@ -61,7 +70,7 @@ export const NavBarDefault: React.FC<{
                     mouseLeaveDelay={0}
                     placement="bottom"
                     trigger={["hover"]}
-                    overlay={<span>Click para ir al Inicio</span>}
+                    overlay={<span>Click para ir a la página de</span>}
                 >
                     <div className="app-container-navBar-Logo">
                         <img
@@ -76,7 +85,7 @@ export const NavBarDefault: React.FC<{
                 <div className="app-container-navBar-searchbox">
                     <Searchbox
                         placeholder="Buscar por líbro, autor o categoría"
-                        handleSearch={() => alert("Buscado")}
+                        handleSearch={() => toast.success("Libros encontrados")}
                     />
                 </div>
 
@@ -174,7 +183,9 @@ export const NavBarDefault: React.FC<{
                             ) : (
                                 <p
                                     onClick={() =>
-                                        alert("No se encuentra registrado")
+                                        toast.error(
+                                            "No se encuentra registrado"
+                                        )
                                     }
                                 >
                                     Historial de Préstamos
@@ -200,14 +211,14 @@ export const NavBarDefault: React.FC<{
                         trigger={["hover"]}
                         overlay={
                             <span>
-                                El Carrito de Compras contiene los libros que
-                                has ordenado. ¡Accede para finalizar tu compra!
+                                El Carrito de Libros contiene los libros que has
+                                ordenado. ¡Accede para finalizar tu préstamo!
                             </span>
                         }
                     >
                         <div
                             className="app-container-navBar-cart"
-                            onClick={openCart}
+                            onClick={() => openCart(userState)}
                         >
                             <div className="counter-orders">
                                 <BsCart className="icon icon-cart" />
@@ -217,11 +228,11 @@ export const NavBarDefault: React.FC<{
                                     </span>
                                 )}
                             </div>
-                            <p>Carrito de Compras</p>
+                            <p>Carrito de Libros</p>
                         </div>
                     </Tooltip>
 
-                    {userState && (
+                    {userState && returnUserAdmin() && (
                         <div className="app-container-navBar-admin-options">
                             <MdOutlineAdminPanelSettings className="icon icon-admin" />
                             <p onClick={() => navigate("/admin")}>

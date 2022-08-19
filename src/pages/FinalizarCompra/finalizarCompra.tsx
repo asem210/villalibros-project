@@ -7,6 +7,8 @@ import { Footer } from "../../components/footer/footer";
 import "./finalizarComprar.css";
 import { InputDefault, InputPassword } from "../../components/input/input";
 import { ButtonComprar, ButtonDescuento } from "../../components/button/button";
+import { toaster } from "rsuite";
+import toast from "react-hot-toast";
 export const FinalizarCompra: React.FC<{
     userState: boolean;
     setUserState: (txt: boolean) => void;
@@ -31,19 +33,9 @@ export const FinalizarCompra: React.FC<{
     const [cuponValue, setcuponValue] = useState("");
     const [cuponState, setcuponState] = useState(false);
 
-    const [terminoStatue, seterminosState] = useState(false);
-
-    const tooglePasswordVisibility = () => {
-        if (terminoStatue === false) {
-            seterminosState(true);
-        } else {
-            seterminosState(false);
-        }
-    };
-
     const CuponLogic = (codigo: boolean) => {
         if (codigo === true) {
-            alert("cupon aplicado");
+            toast.success("Cupon aplicado");
         }
     };
 
@@ -55,21 +47,23 @@ export const FinalizarCompra: React.FC<{
         fecha: boolean
     ) => {
         if (name === false) {
-            alert("Nombre no valido, revisar el error indicado.");
+            toast.error("Nombre no valido, revisar el error indicado.");
         }
         if (lastname === false) {
-            alert("Apellido no valido, revisar el error indicado.");
+            toast.error("Apellido no valido, revisar el error indicado.");
         }
         if (codigo === false) {
-            alert(
+            toast.error(
                 "Número de codigo de tarjeta no valido, revisar el error indicado."
             );
         }
         if (cvv === false) {
-            alert("Número de cvv no valido, revisar el error indicado.");
+            toast.error("Número de cvv no valido, revisar el error indicado.");
         }
         if (fecha === false) {
-            alert("fecha de vencimiento no valido, revisar el error indicado.");
+            toast.error(
+                "fecha de vencimiento no valido, revisar el error indicado."
+            );
         }
 
         if (
@@ -79,7 +73,7 @@ export const FinalizarCompra: React.FC<{
             fecha === true &&
             codigo === true
         ) {
-            alert("Compra exitosa");
+            toast.success("Compra exitosa");
         }
     };
 

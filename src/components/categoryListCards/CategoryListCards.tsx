@@ -6,13 +6,12 @@ import { Book } from "../listCards/cards";
 
 import "./categoryListCards.css";
 import Dropdown from "../dropdown/Dropdown";
+import { PropsWithUserState } from "../../models/interfaces";
 
-const CategoryListCards: React.FC<{}> = () => {
-    const [booksSeller, setBooksSeller] = useState<Array<Book>>([]);
-
-    useEffect(() => {
-        setBooksSeller(books);
-    }, []);
+const CategoryListCards: React.FC<PropsWithUserState> = (
+    { booksSeller },
+    userState: boolean
+) => {
     return (
         <div className="app-container-categoryListCards">
             <div className="wrapper-categoryListCards">
@@ -37,7 +36,7 @@ const CategoryListCards: React.FC<{}> = () => {
                         </div>
                     </div>
                     <div className="categoryListCards-card-content">
-                        <Card booksSeller={booksSeller} />
+                        <Card booksSeller={booksSeller} userState={userState} />
                     </div>
                 </div>
             </div>

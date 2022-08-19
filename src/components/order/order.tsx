@@ -1,12 +1,15 @@
 import React, { Fragment, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./order.css";
-import { Props } from "../../models/interfaces";
+import { PropsWithUserState } from "../../models/interfaces";
 import { calculatePriceWithDiscount } from "../card/card";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 
-const Order: React.FC<Props> = ({ booksSeller }) => {
+const Order: React.FC<PropsWithUserState> = (
+    { booksSeller },
+    userState: boolean
+) => {
     const { id } = useParams();
     const idNumber = Number(id);
 
@@ -27,7 +30,7 @@ const Order: React.FC<Props> = ({ booksSeller }) => {
 
     function openCartAndIncreaseQ(id: number) {
         increaseCartQuantity(id);
-        openCart();
+        openCart(userState);
     }
 
     return (
@@ -236,7 +239,9 @@ const Order: React.FC<Props> = ({ booksSeller }) => {
                                             </div>
                                             <button
                                                 className="comprar-detail-btn"
-                                                onClick={openCart}
+                                                onClick={() =>
+                                                    openCart(userState)
+                                                }
                                             >
                                                 Añadir al Carrito
                                             </button>

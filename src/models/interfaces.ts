@@ -21,6 +21,30 @@ export interface Props {
     }>;
 }
 
+export interface PropsWithUserState {
+    booksSeller: Array<{
+        id: number;
+        title: string;
+        gender?: string;
+        description: string;
+        author: string;
+        price: number;
+        image: string;
+        percentDiscount?: number;
+        sku: string;
+        isbn: string;
+        editorial: string;
+        anyo: number;
+        pages?: number;
+        language: string;
+        weight?: number;
+        width?: number;
+        height?: number;
+        age: string;
+    }>;
+    userState: boolean;
+}
+
 /* export interface Book {
     id: number;
     title: string;

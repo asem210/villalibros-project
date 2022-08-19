@@ -18,7 +18,7 @@ export const OrderDetailsPage: React.FC<{
                 setUserValue={(txt: string) => setUserValue(txt)}
                 userValue={userValue}
             />
-            <Order booksSeller={books}></Order>
+            <Order booksSeller={books} userState={userState}></Order>
             <Footer></Footer>
         </div>
     );

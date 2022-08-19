@@ -6,6 +6,7 @@ import { FcUndo, FcCompactCamera } from "react-icons/fc";
 import { BiEdit } from "react-icons/bi";
 import "./editBook.css";
 import "../../form/addBook/addBookForm.css";
+import toast from "react-hot-toast";
 
 const EditBook: React.FC<Props> = ({ booksSeller }) => {
     const navigate = useNavigate();
@@ -131,7 +132,7 @@ const EditBook: React.FC<Props> = ({ booksSeller }) => {
     };
 
     const saveChanges = () => {
-        alert("Cambios Exitosos");
+        toast.success("Cambios Exitosos");
     };
 
     const imageChange = (e: React.ChangeEvent<HTMLInputElement>) => {

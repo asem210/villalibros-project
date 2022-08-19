@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import toast from "react-hot-toast";
 import { FcUndo, FcCompactCamera } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 
@@ -24,7 +25,7 @@ export const FormAddUserAdmin: React.FC<{}> = () => {
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        alert("Libro Registrado Correctamente");
+        toast.success("Libro Registrado Correctamente");
     };
 
     return (

@@ -2,7 +2,7 @@ import "./card.css";
 import { BsCart } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useShoppingCart } from "../context/ShoppingCartContext";
-import { Props } from "../../models/interfaces";
+import { PropsWithUserState } from "../../models/interfaces";
 
 //Tooltip
 import Tooltip from "rc-tooltip";
@@ -14,7 +14,10 @@ export function calculatePriceWithDiscount(
     return priceWithDisc;
 }
 
-const Card: React.FC<Props> = ({ booksSeller }) => {
+const Card: React.FC<PropsWithUserState> = (
+    { booksSeller },
+    userState: boolean
+) => {
     const navigate = useNavigate();
     const goToDetailsComp = (id: number) => {
         navigate(`/orderdetails/${id}`);
@@ -24,7 +27,7 @@ const Card: React.FC<Props> = ({ booksSeller }) => {
 
     function openCartAndIncreaseQ(id: number) {
         increaseCartQuantity(id);
-        openCart();
+        openCart(userState);
     }
 
     return (

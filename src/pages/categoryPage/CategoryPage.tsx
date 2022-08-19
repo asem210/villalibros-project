@@ -2,6 +2,7 @@ import { NavBarDefault } from "../../components/navBar/navBar";
 import { Footer } from "../../components/footer/footer";
 
 import CategoryListCards from "../../components/categoryListCards/CategoryListCards";
+import books from "../../models/books.json";
 
 export const CategoryPage: React.FC<{
     userState: boolean;
@@ -17,7 +18,7 @@ export const CategoryPage: React.FC<{
                 setUserValue={(txt: string) => setUserValue(txt)}
                 userValue={userValue}
             />
-            <CategoryListCards />
+            <CategoryListCards booksSeller={books} userState={userState} />
             <Footer></Footer>
         </div>
     );

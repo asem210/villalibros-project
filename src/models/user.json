@@ -6,7 +6,8 @@
         "telefono": 925538296,
         "dni": 758688883,
         "correo": "alvarocayetanos@gmail.com",
-        "contraseña": "alvaro123"
+        "contraseña": "alvaro123",
+        "role": "USER"
     },
     {
         "idcliente": 2,
@@ -15,7 +16,8 @@
         "telefono": 999512352,
         "dni": 787475738,
         "correo": "diegomateosan@gmail.com",
-        "contraseña": "onichan123"
+        "contraseña": "onichan123",
+        "role": "USER"
     },
     {
         "idcliente": 3,
@@ -24,7 +26,8 @@
         "telefono": 925253829,
         "dni": 403288201,
         "correo": "gustavo555@gmail.com",
-        "contraseña": "gustavoga1"
+        "contraseña": "gustavoga1",
+        "role": "USER"
     },
     {
         "idcliente": 4,
@@ -33,7 +36,8 @@
         "telefono": 924517863,
         "dni": 569680074,
         "correo": "erick3454@gmail.com",
-        "contraseña": "patitonichan5"
+        "contraseña": "patitonichan5",
+        "role": "USER"
     },
     {
         "idcliente": 5,
@@ -41,8 +45,9 @@
         "apellido": "Mayhuay Marcos",
         "telefono": 958691256,
         "dni": 320203665,
-        "correo": "jordymmmm@gmail.com",
-        "contraseña": "gaaa2356"
+        "correo": "jordy@gmail.com",
+        "contraseña": "1234",
+        "role": "ADMIN"
     },
     {
         "idcliente": 6,
@@ -51,7 +56,8 @@
         "telefono": 958632156,
         "dni": 383671703,
         "correo": "danielemejor@gmail.com",
-        "contraseña": "danimani323"
+        "contraseña": "danimani323",
+        "role": "USER"
     },
     {
         "idcliente": 7,
@@ -60,7 +66,8 @@
         "telefono": 963245786,
         "dni": 683085073,
         "correo": "antobblob1@gmail.com",
-        "contraseña": "miau5426"
+        "contraseña": "miau5426",
+        "role": "USER"
     },
     {
         "idcliente": 8,
@@ -69,7 +76,8 @@
         "telefono": 947586236,
         "dni": 731249239,
         "correo": "jojonavidad2@gmail.com",
-        "contraseña": "beascoastti"
+        "contraseña": "beascoastti",
+        "role": "USER"
     },
     {
         "idcliente": 9,
@@ -78,7 +86,8 @@
         "telefono": 975846245,
         "dni": 952427058,
         "correo": "erickj54@gmail.com",
-        "contraseña": "nosequehagoenperu6"
+        "contraseña": "nosequehagoenperu6",
+        "role": "USER"
     },
     {
         "idcliente": 10,
@@ -87,7 +96,8 @@
         "telefono": 912045036,
         "dni": 411092696,
         "correo": "mariaxpre@hotmail.com",
-        "contraseña": "maria2363"
+        "contraseña": "maria2363",
+        "role": "USER"
     },
     {
         "idcliente": 11,
@@ -96,7 +106,8 @@
         "telefono": 958691256,
         "dni": 320203665,
         "correo": "jordymmmm@gmail.com",
-        "contraseña": "gaaa2356"
+        "contraseña": "gaaa2356",
+        "role": "USER"
     },
     {
         "idcliente": 12,
@@ -105,7 +116,8 @@
         "telefono": 985632146,
         "dni": 286209637,
         "correo": "anitalavalatina@gmail.com",
-        "contraseña": "miau222222"
+        "contraseña": "miau222222",
+        "role": "USER"
     },
     {
         "idcliente": 13,
@@ -114,7 +126,8 @@
         "telefono": 948567150,
         "dni": 809075174,
         "correo": "colariuwu1@gmail.com",
-        "contraseña": "gatito123"
+        "contraseña": "gatito123",
+        "role": "USER"
     },
     {
         "idcliente": 14,
@@ -123,7 +136,8 @@
         "telefono": 924353102,
         "dni": 223727282,
         "correo": "maritza111@gmail.com",
-        "contraseña": "panqueque1222"
+        "contraseña": "panqueque1222",
+        "role": "USER"
     },
     {
         "idcliente": 15,
@@ -132,6 +146,7 @@
         "telefono": 947851002,
         "dni": 902299791,
         "correo": "alvaroelmejorm@gmail.com",
-        "contraseña": "burros111500"
+        "contraseña": "burros111500",
+        "role": "USER"
     }
 ]

@@ -10,6 +10,8 @@ import { Footer } from "../../components/footer/footer";
 
 import { Searchbox } from "../../components/searchBox/searchBox";
 
+import { Toaster, toast } from "react-hot-toast";
+
 import "./history.css";
 export const History: React.FC<{
     userState: boolean;
@@ -29,7 +31,7 @@ export const History: React.FC<{
             <div className="app-container-history-searchbox">
                 <Searchbox
                     placeholder="Filtrar por nombre, categoria, fecha, etc."
-                    handleSearch={() => alert("Buscado")}
+                    handleSearch={() => toast("Hello world")}
                 />
             </div>
 
@@ -38,6 +40,7 @@ export const History: React.FC<{
             </div>
 
             <Footer />
+            <Toaster />
         </div>
     );
 };

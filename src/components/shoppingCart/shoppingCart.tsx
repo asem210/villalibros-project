@@ -7,14 +7,25 @@ import { calculatePriceWithDiscount } from "../card/card";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import Tooltip from "rc-tooltip";
+import toast from "react-hot-toast";
 
 type ShoppingCartProps = {
     isOpen: boolean;
+    stateLogin: boolean;
 };
 
-const ShoppingCart = ({ isOpen }: ShoppingCartProps) => {
+const ShoppingCart = ({ isOpen, stateLogin }: ShoppingCartProps) => {
     const navigate = useNavigate();
     const { closeCart, cartItems, cartQuantity } = useShoppingCart();
+
+    const finishShopping = () => {
+        console.log(stateLogin);
+        if (stateLogin === true) {
+            navigate("/finalizarCompra");
+        } else {
+            toast("Inicia Sesión para finalizar tu compra");
+        }
+    };
     return (
         <>
             {isOpen && (
@@ -48,7 +59,7 @@ const ShoppingCart = ({ isOpen }: ShoppingCartProps) => {
                                 />
                             </Tooltip>
 
-                            <h1>CARRITO DE COMPRAS</h1>
+                            <h1>CARRITO DE LIBROS</h1>
                         </div>
                         {cartQuantity === 0 ? (
                             <div className="shopping-cart-body shopping-empty-cart">
@@ -148,12 +159,10 @@ const ShoppingCart = ({ isOpen }: ShoppingCartProps) => {
                                         </span>
                                     </div>
                                     <button
-                                        onClick={(e) => {
-                                            navigate("/finalizarCompra");
-                                        }}
+                                        onClick={() => finishShopping()}
                                         className="shopping-cart-footer-btn"
                                     >
-                                        Finalizar compra
+                                        Finalizar Préstamo
                                     </button>
                                 </div>
                             </>

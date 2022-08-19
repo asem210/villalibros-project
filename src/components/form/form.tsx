@@ -7,6 +7,7 @@ import { FiCheckSquare, FiSquare } from "react-icons/fi";
 import "./form.css";
 import { AiOutlineClose } from "react-icons/ai";
 import Tooltip from "rc-tooltip";
+import { toast } from "react-hot-toast";
 
 export const FormLogin: React.FC<{
     state: boolean;
@@ -37,13 +38,13 @@ export const FormLogin: React.FC<{
 
     const loginLogic = (password: boolean, email: boolean) => {
         if (password === false) {
-            alert("Contraseña no válida, revisar el error indicado.");
+            toast.error("Contraseña no válida, revisar el error indicado.");
         }
         if (email === false) {
-            alert("Correo no válido, revisar el error indicado.");
+            toast.error("Correo no válido, revisar el error indicado.");
         }
         if (email === true && password === true) {
-            alert("Sesión iniciada con éxito");
+            toast.success("Sesión iniciada con éxito");
             handleChange(false);
             setUserState(true);
             setUserValue(InputValue);
@@ -179,28 +180,20 @@ export const FormRegister: React.FC<{
         terminos: boolean
     ) => {
         if (name === false) {
-            alert("Nombre no valido, revisar el error indicado.");
-        }
-        if (lastname === false) {
-            alert("Apellido no valido, revisar el error indicado.");
-        }
-        if (dni === false) {
-            alert("Número de DNI no valido, revisar el error indicado.");
-        }
-        if (phone === false) {
-            alert("Número de celular no valido, revisar el error indicado.");
-        }
-        if (email === false) {
-            alert("Correo no valido, revisar el error indicado.");
-        }
-
-        if (password === false) {
-            alert("Contraseña no valida, revisar el error indicado.");
-        }
-
-        if (terminos === false) {
-            alert(
-                "Terminos y condiciones no aceptados, por favor verifique la casilla."
+            toast.error("Error en el campo de Nombres");
+        } else if (lastname === false) {
+            toast.error("Error en el campo de Apellidos");
+        } else if (dni === false) {
+            toast.error("Error en el campo de DNI");
+        } else if (phone === false) {
+            toast.error("Error en el campo de Número de celular");
+        } else if (email === false) {
+            toast.error("Error en el campo de Correo Electrónico");
+        } else if (password === false) {
+            toast.error("Error en el campo de Contraseña");
+        } else if (terminos === false) {
+            toast.error(
+                "Términos y condiciones no aceptados. Verificar casilla."
             );
         }
 
@@ -213,7 +206,7 @@ export const FormRegister: React.FC<{
             dni === true &&
             terminos === true
         ) {
-            alert("Usuario registrado correctamente");
+            toast.success("Usuario registrado correctamente");
             handleRegister(false);
             handleChange(true);
         }
@@ -425,56 +418,4 @@ export const FormRegister: React.FC<{
             </div>
         </div>
     );
-};
-
-export const FormComprar: React.FC<{}> = ({}) => {
-    const ComprarLogic = (
-        name: boolean,
-        lastname: boolean,
-        dni: boolean,
-        phone: boolean,
-        password: boolean,
-        email: boolean,
-        terminos: boolean
-    ) => {
-        if (name === false) {
-            alert("Nombre no valido, revisar el error indicado.");
-        }
-        if (lastname === false) {
-            alert("Apellido no valido, revisar el error indicado.");
-        }
-        if (dni === false) {
-            alert("Número de DNI no valido, revisar el error indicado.");
-        }
-        if (phone === false) {
-            alert("Número de celular no valido, revisar el error indicado.");
-        }
-        if (email === false) {
-            alert("Correo no valido, revisar el error indicado.");
-        }
-
-        if (password === false) {
-            alert("Contraseña no valida, revisar el error indicado.");
-        }
-
-        if (terminos === false) {
-            alert(
-                "Terminos y condiciones no aceptados, por favor verifique la casilla."
-            );
-        }
-
-        if (
-            name === true &&
-            lastname === true &&
-            email === true &&
-            password === true &&
-            phone === true &&
-            dni === true &&
-            terminos === true
-        ) {
-            alert("Usuario registrado correctamente");
-        }
-    };
-
-    return <div></div>;
 };

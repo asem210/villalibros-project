@@ -7,27 +7,28 @@ import { Slide } from "../../components/slides/slide";
 import Cards from "../../components/listCards/cards";
 import { Footer } from "../../components/footer/footer";
 import { Categories } from "../../components/categories/category";
+import books from "../../models/books.json";
 
 export const Home: React.FC<{
-  userState: boolean;
-  setUserState: (txt: boolean) => void;
-  setUserValue: (txt: string) => void;
-  userValue: string;
+    userState: boolean;
+    setUserState: (txt: boolean) => void;
+    setUserValue: (txt: string) => void;
+    userValue: string;
 }> = ({ userState, setUserState, setUserValue, userValue }) => {
-  const [loginState, setLoginState] = useState(false);
+    const [loginState, setLoginState] = useState(false);
 
-  return (
-    <div className="app-container-home">
-      <NavBarDefault
-        userState={userState}
-        setUserState={(txt: boolean) => setUserState(txt)}
-        setUserValue={(txt: string) => setUserValue(txt)}
-        userValue={userValue}
-      />
-      <Slide></Slide>
-      <Categories></Categories>
-      <Cards></Cards>
-      <Footer></Footer>
-    </div>
-  );
+    return (
+        <div className="app-container-home">
+            <NavBarDefault
+                userState={userState}
+                setUserState={(txt: boolean) => setUserState(txt)}
+                setUserValue={(txt: string) => setUserValue(txt)}
+                userValue={userValue}
+            />
+            <Slide></Slide>
+            <Categories></Categories>
+            <Cards booksSeller={books} userState={userState}></Cards>
+            <Footer></Footer>
+        </div>
+    );
 };

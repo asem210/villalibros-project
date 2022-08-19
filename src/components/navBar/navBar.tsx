@@ -100,7 +100,7 @@ export const NavBarDefault: React.FC<{
                                     onClick={() => SetModalStateLogin(true)}
                                 />
 
-                                {/* <p onClick={MostrarState}>{userValue}</p>  */}
+                                {/* <p onClick={MostrarState}>{userValue}</p> */}
                                 <Dropdown
                                     title={userValue}
                                     items={["Cerrar Sesión"]}

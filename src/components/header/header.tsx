@@ -9,7 +9,7 @@ export const HistoryHeader: React.FC<{}> = () => {
     return (
         <div className="app-container-history-header">
             <BiCalendar size={30} />
-            <label>Historial de préstamos</label>
+            <label>Historial de Préstamos</label>
         </div>
     );
 };
@@ -18,7 +18,7 @@ export const ComprarHeader: React.FC<{}> = () => {
     return (
         <div className="app-container-history-header">
             <BsCartCheckFill size={30} />
-            <label>Finalizar Compra</label>
+            <label>Finalizar Préstamo</label>
         </div>
     );
 };

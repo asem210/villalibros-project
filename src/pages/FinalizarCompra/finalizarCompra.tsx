@@ -8,6 +8,7 @@ import "./finalizarComprar.css";
 import { InputDefault, InputPassword } from "../../components/input/input";
 import { ButtonComprar, ButtonDescuento } from "../../components/button/button";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 export const FinalizarCompra: React.FC<{
     userState: boolean;
     setUserState: (txt: boolean) => void;
@@ -38,6 +39,8 @@ export const FinalizarCompra: React.FC<{
         }
     };
 
+    const navigate = useNavigate();
+
     const ComprarLogic = (
         name: boolean,
         lastname: boolean,
@@ -47,19 +50,15 @@ export const FinalizarCompra: React.FC<{
     ) => {
         if (name === false) {
             toast.error("Nombre no valido, revisar el error indicado.");
-        }
-        if (lastname === false) {
+        } else if (lastname === false) {
             toast.error("Apellido no valido, revisar el error indicado.");
-        }
-        if (codigo === false) {
+        } else if (codigo === false) {
             toast.error(
                 "Número de codigo de tarjeta no valido, revisar el error indicado."
             );
-        }
-        if (cvv === false) {
+        } else if (cvv === false) {
             toast.error("Número de cvv no valido, revisar el error indicado.");
-        }
-        if (fecha === false) {
+        } else if (fecha === false) {
             toast.error(
                 "fecha de vencimiento no valido, revisar el error indicado."
             );
@@ -73,6 +72,7 @@ export const FinalizarCompra: React.FC<{
             codigo === true
         ) {
             toast.success("Compra exitosa");
+            navigate("/");
         }
     };
 
@@ -191,7 +191,7 @@ export const FinalizarCompra: React.FC<{
                                 cvv={cvvdState}
                                 fechaven={fechaState}
                                 codigo={codigoState}
-                                placeholder="FINALIZAR COMPRA"
+                                placeholder="FINALIZAR PRÉSTAMO"
                                 handleClick={(
                                     name: boolean,
                                     lastname: boolean,

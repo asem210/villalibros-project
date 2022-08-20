@@ -15,8 +15,6 @@ export const Home: React.FC<{
     setUserValue: (txt: string) => void;
     userValue: string;
 }> = ({ userState, setUserState, setUserValue, userValue }) => {
-    const [loginState, setLoginState] = useState(false);
-
     return (
         <div className="app-container-home">
             <NavBarDefault

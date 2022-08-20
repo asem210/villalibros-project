@@ -72,7 +72,7 @@ export const NavBarDefault: React.FC<{
                     mouseLeaveDelay={0}
                     placement="bottom"
                     trigger={["hover"]}
-                    overlay={<span>Click para ir a la página de</span>}
+                    overlay={<span>Click para ir a la página de inicio</span>}
                 >
                     <div className="app-container-navBar-Logo">
                         <img

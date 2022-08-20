@@ -76,7 +76,7 @@ export const FinalizarCompra: React.FC<{
             fecha === true &&
             codigo === true
         ) {
-            toast.success("Compra exitosa");
+            toast.success("Préstamo exitosa");
             navigate("/");
         }
     };
